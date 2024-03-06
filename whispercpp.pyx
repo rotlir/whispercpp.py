@@ -16,15 +16,21 @@ cimport numpy as cnp
 cdef int SAMPLE_RATE = 16000
 cdef char* TEST_FILE = 'test.wav'
 cdef char* DEFAULT_MODEL = 'tiny'
-cdef char* LANGUAGE = b'en'
+# edited: auto language detection
+cdef char* LANGUAGE = b'auto'
 cdef int N_THREADS = os.cpu_count()
 
+# edited: add quantized models to the dictionary
 MODELS = {
     'ggml-tiny.bin': 'https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-tiny.bin',
     'ggml-base.bin': 'https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base.bin',
     'ggml-small.bin': 'https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-small.bin',
     'ggml-medium.bin': 'https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-medium.bin',
     'ggml-large.bin': 'https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-large.bin',
+    'ggml-tiny-q5_1.bin': 'https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-tiny-q5_1.bin',
+    'ggml-base-q5_1.bin': 'https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base-q5_1.bin',
+    'ggml-medium-q5_0.bin': 'https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-medium-q5_0.bin',
+    'ggml-large-v3-q5_0.bin': 'https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-large-v3-q5_0.bin'
 }
 
 def model_exists(model):
