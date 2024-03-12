@@ -11,8 +11,8 @@ elif "arm" not in platform.machine():
     os.environ['CFLAGS']   = '-mavx -mavx2 -mfma -mf16c -O3 -std=gnu11'
     os.environ['CXXFLAGS'] = '-mavx -mavx2 -mfma -mf16c -O3 -std=c++11'
 else:
-    os.environ['CFLAGS'] = '-mfpu=neon -mfloat-abi=hard -O3 -std=gnu11'
-    os.environ['CXXFLAGS'] = '-mfpu=neon -mfloat-abi=hard -O3 -std=c++11'
+    os.environ['CFLAGS'] = '-mfpu=neon -mfp16-format=ieee -mno-unaligned-access -O3 -std=gnu11'
+    os.environ['CXXFLAGS'] = '-mfpu=neon -mfp16-format=ieee -mno-unaligned-access -O3 -std=c++11'
 
 ext_modules = [
     Extension(
