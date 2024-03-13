@@ -8,8 +8,8 @@ if sys.platform == 'darwin':
     os.environ['CXXFLAGS'] = '-DGGML_USE_ACCELERATE -O3 -std=c++11'
     os.environ['LDFLAGS']  = '-framework Accelerate'
 elif platform.machine() == 'aarch64':
-    os.environ['CFLAGS'] = '-mfpu=neon-fp-armv8 -mfp16-format=ieee -funsafe-math-optimizations -mno-unaligned-access -O3 -std=gnu11'
-    os.environ['CXXFLAGS'] = '-mfpu=neon-fp-armv8 -mfp16-format=ieee -funsafe-math-optimizations -mno-unaligned-access -O3 -std=c++11'
+    os.environ['CFLAGS'] = '-funsafe-math-optimizations -O3 -std=gnu11'
+    os.environ['CXXFLAGS'] = '-funsafe-math-optimizations -O3 -std=c++11'
 else:
     os.environ['CFLAGS']   = '-mavx -mavx2 -mfma -mf16c -O3 -std=gnu11'
     os.environ['CXXFLAGS'] = '-mavx -mavx2 -mfma -mf16c -O3 -std=c++11'
